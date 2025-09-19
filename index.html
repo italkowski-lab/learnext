@@ -41,6 +41,14 @@
     .course h4{margin-bottom:8px;font-size:18px}
     .course p{color:var(--muted);font-size:14px}
 
+    .course-view{display:none;background:var(--card);padding:24px;border-radius:var(--radius);margin-top:30px}
+    .course-view.active{display:block}
+    .lesson{padding:12px;border-radius:10px;background:rgba(255,255,255,0.04);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+    .lesson button{background:transparent;border:1px solid var(--accent);color:var(--accent);padding:6px 12px;border-radius:8px;cursor:pointer}
+    .lesson button:hover{background:var(--accent);color:#04111a}
+
+    iframe{width:100%;height:400px;border:none;border-radius:10px;margin-top:16px}
+
     .about{margin-top:80px;text-align:center;max-width:700px;margin-left:auto;margin-right:auto}
     .about h3{font-size:22px;margin-bottom:12px}
     .about p{color:var(--muted)}
@@ -74,20 +82,8 @@
 
     <section class="courses" id="cursos">
       <h3>Cursos destacados</h3>
-      <div class="grid">
-        <div class="course">
-          <h4>Ingreso ITBA</h4>
-          <p>Preparación intensiva para el examen de ingreso universitario.</p>
-        </div>
-        <div class="course">
-          <h4>Developer Specialist</h4>
-          <p>Bootcamp práctico de programación web y portfolio real.</p>
-        </div>
-        <div class="course">
-          <h4>Emprendimiento Lean</h4>
-          <p>De la idea al MVP: validación y presentación a inversores.</p>
-        </div>
-      </div>
+      <div class="grid" id="course-list"></div>
+      <div id="course-views"></div>
     </section>
 
     <section class="about" id="about">
@@ -99,5 +95,93 @@
       © 2025 LEARNEXT — Maqueta minimal
     </footer>
   </div>
+
+  <script>
+    const COURSES = [
+      {
+        id:"itba",
+        title:"Ingreso ITBA",
+        desc:"Preparación intensiva para el examen de ingreso universitario.",
+        lessons:[
+          {title:"Álgebra esencial", video:"https://www.youtube.com/embed/ScMzIvxBSi4"},
+          {title:"Lógica y problemas", video:"https://www.youtube.com/embed/ScMzIvxBSi4"},
+          {title:"Simulacro completo", video:"https://www.youtube.com/embed/ScMzIvxBSi4"}
+        ]
+      },
+      {
+        id:"dev",
+        title:"Developer Specialist",
+        desc:"Bootcamp práctico de programación web y portfolio real.",
+        lessons:[
+          {title:"HTML y estructura", video:"https://www.youtube.com/embed/ScMzIvxBSi4"},
+          {title:"Mini-app práctica", video:"https://www.youtube.com/embed/ScMzIvxBSi4"},
+          {title:"Git y flujo de trabajo", video:"https://www.youtube.com/embed/ScMzIvxBSi4"}
+        ]
+      },
+      {
+        id:"lean",
+        title:"Emprendimiento Lean",
+        desc:"De la idea al MVP: validación y presentación a inversores.",
+        lessons:[
+          {title:"Validación de idea", video:"https://www.youtube.com/embed/ScMzIvxBSi4"},
+          {title:"Primer prototipo", video:"https://www.youtube.com/embed/ScMzIvxBSi4"}
+        ]
+      }
+    ];
+
+    const list = document.getElementById("course-list");
+    const views = document.getElementById("course-views");
+
+    COURSES.forEach(c=>{
+      // course card
+      const card=document.createElement("div");
+      card.className="course";
+      card.innerHTML=`<h4>${c.title}</h4><p>${c.desc}</p>`;
+      card.onclick=()=>openCourse(c.id);
+      list.appendChild(card);
+
+      // course view
+      const view=document.createElement("div");
+      view.className="course-view";
+      view.id="view-"+c.id;
+      view.innerHTML=`<h3>${c.title}</h3><p style="color:var(--muted)">${c.desc}</p>`;
+      const lessons=document.createElement("div");
+      c.lessons.forEach(l=>{
+        const el=document.createElement("div");
+        el.className="lesson";
+        el.innerHTML=`<span>${l.title}</span><button onclick='openLesson("${c.id}","${l.video}")'>Ver clase</button>`;
+        lessons.appendChild(el);
+      });
+      view.appendChild(lessons);
+      const back=document.createElement("div");
+      back.style.marginTop="16px";
+      back.innerHTML=`<button class="cta" onclick="closeCourse()">Volver</button>`;
+      view.appendChild(back);
+      const player=document.createElement("iframe");
+      player.id="player-"+c.id;
+      player.style.display="none";
+      view.appendChild(player);
+      views.appendChild(view);
+    });
+
+    function openCourse(id){
+      document.querySelectorAll(".course-view").forEach(v=>v.classList.remove("active"));
+      document.getElementById("view-"+id).classList.add("active");
+      window.scrollTo({top:document.getElementById("view-"+id).offsetTop-20,behavior:"smooth"});
+    }
+
+    function closeCourse(){
+      document.querySelectorAll(".course-view").forEach(v=>v.classList.remove("active"));
+      window.scrollTo({top:document.getElementById("cursos").offsetTop-20,behavior:"smooth"});
+    }
+
+    function openLesson(courseId,video){
+      const player=document.getElementById("player-"+courseId);
+      player.src=video+"?autoplay=1";
+      player.style.display="block";
+      player.scrollIntoView({behavior:"smooth"});
+    }
+  </script>
 </body>
 </html>
+
