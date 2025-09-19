@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEARNEXT - Cursos para Adolescentes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Header -->
+  <header class="bg-indigo-600 text-white p-6 shadow-md">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">LEARNEXT</h1>
+      <nav>
+        <ul class="flex space-x-6">
+          <li><a href="#cursos" class="hover:underline">Cursos</a></li>
+          <li><a href="#nosotros" class="hover:underline">Nosotros</a></li>
+          <li><a href="#contacto" class="hover:underline">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">Aprendé lo que te apasiona</h2>
+      <p class="text-lg mb-6">Cursos online para adolescentes, prácticos y divertidos</p>
+      <a href="#cursos" class="bg-white text-indigo-600 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100">Ver cursos</a>
+    </div>
+  </section>
+
+  <!-- Cursos -->
+  <section id="cursos" class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h3 class="text-3xl font-bold text-center mb-10">Nuestros Cursos</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg">
+          <h4 class="text-xl font-semibold mb-2">Programación Básica</h4>
+          <p class="text-gray-600 mb-4">Aprendé a programar desde cero con ejemplos prácticos y divertidos.</p>
+          <span class="text-indigo-600 font-bold">Nivel inicial</span>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg">
+          <h4 class="text-xl font-semibold mb-2">Diseño Digital</h4>
+          <p class="text-gray-600 mb-4">Usá herramientas digitales para crear posters, flyers y contenido creativo.</p>
+          <span class="text-indigo-600 font-bold">Nivel intermedio</span>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg">
+          <h4 class="text-xl font-semibold mb-2">Robótica</h4>
+          <p class="text-gray-600 mb-4">Armá y programá robots simples para aprender jugando.</p>
+          <span class="text-indigo-600 font-bold">Nivel inicial</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nosotros -->
+  <section id="nosotros" class="bg-gray-100 py-16">
+    <div class="max-w-4xl mx-auto text-center px-4">
+      <h3 class="text-3xl font-bold mb-6">Sobre LEARNEXT</h3>
+      <p class="text-lg text-gray-700">En LEARNEXT creemos que el aprendizaje debe ser práctico, entretenido y enfocado en el futuro. Nuestros cursos están diseñados para que los adolescentes descubran y desarrollen sus talentos.</p>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h3 class="text-3xl font-bold mb-6">Contacto</h3>
+      <p class="mb-6">¿Querés más información? Dejanos tu email y te escribimos:</p>
+      <form class="flex flex-col md:flex-row justify-center gap-4">
+        <input type="email" placeholder="Tu email" required class="px-4 py-3 rounded-lg border w-full md:w-1/2">
+        <button type="submit" class="bg-indigo-600 text-white px-6 py-3 rounded-lg shadow hover:bg-indigo-700">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-indigo-600 text-white py-6 mt-10">
+    <div class="max-w-6xl mx-auto text-center">
+      <p>&copy; 2025 LEARNEXT - Todos los derechos reservados</p>
+    </div>
+  </footer>
+</body>
+</html>
